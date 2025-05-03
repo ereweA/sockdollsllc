@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Product name 1",
+        "price": 50,
+        "image": "images/doll1.jfif"
+    },
+    {
+        "id": 2,
+        "name": "Product name 2",
+        "price": 45,
+        "image": "images/doll2.jfif"
+    },
+    {
+        "id": 3,
+        "name": "Product name 3",
+        "price": 58,
+        "image": "images/doll3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Product name 4",
+        "price": 54,
+        "image": "images/doll4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Product name 5",
+        "price": 55,
+        "image": "images/doll5.jfif"
+    },
+    {
+        "id": 5,
+        "name": "Product name 6",
+        "price": 51,
+        "image": "images/doll6.jfif"
+    }
+]
