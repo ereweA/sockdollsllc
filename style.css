@@ -1,5 +1,5 @@
 body{
-    font-family: Cambria;
+    font-family: Helvetica;
     overflow-x: hidden;
     font-synthesis: 15px;
 }
@@ -16,10 +16,11 @@ header img{
     width: 60px;
 }
 header{
+    font: Kristen italic;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #e5bcbf;
+    background-color: #ff7881;
     margin-bottom: 20px;
 }
 header .iconCart{
@@ -241,4 +242,50 @@ header .totalQuantity{
 .returnCart .list .item .returnPrice{
     font-size: large;
     font-weight: bold;
+}
+#chat-tab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+}
+
+#chat-window {
+    display: none;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+#chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#chat-body {
+    height: 200px;
+    padding: 10px;
+    overflow-y: auto;
+    font-family: sans-serif;
+}
+
+#chat-input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
 }

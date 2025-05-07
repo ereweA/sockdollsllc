@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Web Page</title>
         <link rel="stylesheet" href="style.css">
+        <script src="ui.js" defer></script>
+        <script src="chatbot.js" defer></script>
     </head>
     <body>
         <div class="container">
@@ -51,5 +53,12 @@
         </div>
     </div>    
         <script src="app.js"></script>
+    <div id="chat-tab">Chat with us</div>
+
+    <div id="chat-window">
+        <div id="chat-header">Customer Support</div>
+        <div id="chat-body"></div>
+        <input type="text" id="chat-input" placeholder="Type a message..." />
+    </div>
     </body>
 </html>
