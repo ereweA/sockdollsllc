@@ -1,5 +1,5 @@
 body{
-    font-family: monospace;
+    font-family: Cambria;
     overflow-x: hidden;
     font-synthesis: 15px;
 }
@@ -19,6 +19,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #e5bcbf;
+    margin-bottom: 20px;
 }
 header .iconCart{
     position: relative;
