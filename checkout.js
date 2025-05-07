@@ -1,43 +1,65 @@
 let listCart = [];
-function checkCart(){
-        var cookieValue = document.cookie
+
+function checkCart() {
+    const cookieValue = document.cookie
         .split('; ')
         .find(row => row.startsWith('listCart='));
-        if(cookieValue){
-            listCart = JSON.parse(cookieValue.split('=')[1]);
-        }
+    if (cookieValue) {
+        listCart = JSON.parse(cookieValue.split('=')[1]);
+    }
 }
-checkCart();
-addCartToHTML();
-function addCartToHTML(){
-    // clear data default
-    let listCartHTML = document.querySelector('.returnCart .list');
+
+function addCartToHTML() {
+    const listCartHTML = document.querySelector('.returnCart .list');
     listCartHTML.innerHTML = '';
 
-    let totalQuantityHTML = document.querySelector('.totalQuantity');
-    let totalPriceHTML = document.querySelector('.totalPrice');
+    const totalQuantityHTML = document.querySelector('.totalQuantity');
+    const totalPriceHTML = document.querySelector('.totalPrice');
+
     let totalQuantity = 0;
-    let totalPrice = 0;
-    // if has product in Cart
-    if(listCart){
+    let subtotal = 0;
+
+    if (listCart && listCart.length > 0) {
         listCart.forEach(product => {
-            if(product){
-                let newCart = document.createElement('div');
+            if (product) {
+                const newCart = document.createElement('div');
                 newCart.classList.add('item');
-                newCart.innerHTML = 
-                    `<img src="${product.image}">
+                newCart.innerHTML = `
+                    <img src="${product.image}">
                     <div class="info">
                         <div class="name">${product.name}</div>
                         <div class="price">$${product.price}/1 product</div>
                     </div>
                     <div class="quantity">${product.quantity}</div>
-                    <div class="returnPrice">$${product.price * product.quantity}</div>`;
+                    <div class="returnPrice">$${product.price * product.quantity}</div>
+                `;
                 listCartHTML.appendChild(newCart);
-                totalQuantity = totalQuantity + product.quantity;
-                totalPrice = totalPrice + (product.price * product.quantity);
+
+                totalQuantity += product.quantity;
+                subtotal += product.price * product.quantity;
             }
-        })
+        });
     }
+
     totalQuantityHTML.innerText = totalQuantity;
-    totalPriceHTML.innerText = '$' + totalPrice;
+    window.rawProductTotal = subtotal;
+    updateTotalPrice();
 }
+
+function updateTotalPrice() {
+    const shippingValue = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
+    const total = window.rawProductTotal + shippingValue;
+
+    const totalPriceHTML = document.querySelector('.totalPrice');
+    totalPriceHTML.innerText = '$' + total;
+}
+
+function setupShippingListener() {
+    document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+        radio.addEventListener('change', updateTotalPrice);
+    });
+}
+
+checkCart();
+addCartToHTML();
+setupShippingListener();

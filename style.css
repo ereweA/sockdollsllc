@@ -199,6 +199,11 @@ header .totalQuantity{
     background-color: #6a6fc9;
     color: #fff;
 }
+.shippingform form{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
 .checkoutLayout .right .return .row{
     display: flex;
     justify-content: space-between;
@@ -246,19 +251,20 @@ header .totalQuantity{
 #chat-tab {
     position: fixed;
     bottom: 20px;
-    right: 20px;
     background: #007bff;
     color: white;
     padding: 10px 20px;
     border-radius: 10px 10px 0 0;
     cursor: pointer;
+    left: 20px;        
+    right: auto;       
+    bottom: 20px;
 }
 
 #chat-window {
     display: none;
     position: fixed;
     bottom: 60px;
-    right: 20px;
     width: 300px;
     background: white;
     border: 1px solid #ccc;
@@ -266,6 +272,9 @@ header .totalQuantity{
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     overflow: hidden;
     flex-direction: column;
+    left: 20px;        
+    right: auto;       
+    
 }
 
 #chat-header {
@@ -289,3 +298,4 @@ header .totalQuantity{
     box-sizing: border-box;
     border-top: 1px solid #ccc;
 }
+

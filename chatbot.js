@@ -6,9 +6,8 @@ document.getElementById('chat-input').addEventListener('keypress', function(e) {
         addMessage('You', userInput);
         this.value = '';
 
-        // Simulate bot response
         setTimeout(() => {
-            addMessage('Bot', getGenericResponse(userInput));
+            addMessage('Customer Serivce', getGenericResponse(userInput));
         }, 500);
     }
 });
@@ -21,7 +20,6 @@ function addMessage(sender, text) {
 }
 
 function getGenericResponse(userMessage) {
-    // Simple hardcoded logic
     const lower = userMessage.toLowerCase();
     if (lower.includes('hello') || lower.includes('hi')) {
         return 'Hello! How can I help you today?';
