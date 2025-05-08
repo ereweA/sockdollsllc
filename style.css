@@ -12,16 +12,34 @@ a{
     max-width: 90%;
     transition: transform 1s;
 }
+.loginButton button{
+    background: linear-gradient(to right, #ff7881, #ff9a8b);
+    border: 1px solid #000000;               
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    padding: 10px 20px;                      
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; 
+}
 header img{
     width: 60px;
 }
-header{
-    font: Kristen italic;
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ff7881;
+    background: linear-gradient(to right, #ff7881, #ff9a8b); 
     margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #000000;               
+    border-radius: 12px;                     
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    padding: 10px 20px;                      
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
 header .iconCart{
     position: relative;
@@ -52,6 +70,9 @@ header .totalQuantity{
     width: 100%;
         height: 430px;
     object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid #000000;               
+
 }
 .listProduct .item{
     position: relative;
@@ -68,7 +89,7 @@ header .totalQuantity{
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #e6572c;
+    background-color: #ff9a8b;
     color: #fff;
     width: 50%;
     border: none;
@@ -77,6 +98,7 @@ header .totalQuantity{
     cursor: pointer;
     transform: translateX(-50%) translateY(100px);
     opacity: 0;
+    border-radius: 12px; 
 }
 .listProduct .item:hover button{
     transition:  0.5s;

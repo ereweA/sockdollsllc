@@ -1,37 +1,37 @@
 [
     {
         "id": 1,
-        "name": "Product name 1",
+        "name": "Red Hair Doll",
         "price": 50,
         "image": "images/doll1.jfif"
     },
     {
         "id": 2,
-        "name": "Product name 2",
+        "name": "Yellow Hair Doll",
         "price": 45,
         "image": "images/doll2.jfif"
     },
     {
         "id": 3,
-        "name": "Product name 3",
+        "name": "Cozy Doll",
         "price": 58,
         "image": "images/doll3.jpg"
     },
     {
         "id": 4,
-        "name": "Product name 4",
+        "name": "Blank Doll",
         "price": 54,
         "image": "images/doll4.jpg"
     },
     {
         "id": 5,
-        "name": "Product name 5",
+        "name": "Monkey Doll",
         "price": 55,
         "image": "images/doll5.jfif"
     },
     {
         "id": 5,
-        "name": "Product name 6",
+        "name": "Happy Doll",
         "price": 51,
         "image": "images/doll6.jfif"
     }
