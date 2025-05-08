@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <input type="text" id="logUser" placeholder="Username">
+    <input type="password" id="logPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+
+    <script>
+    function login() {
+    const user = document.getElementById("logUser").value;
+    const pass = document.getElementById("logPass").value;
+    const savedUser = localStorage.getItem("user");
+    const savedPass = localStorage.getItem("pass");
+
+    if (user === savedUser && pass === savedPass) {
+        alert("Login successful!");
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 3000); 
+    } else {
+        alert("Login failed.");
+    }
+    }
+    </script>
 </body>
 </html>

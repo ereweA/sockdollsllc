@@ -21,6 +21,15 @@ a{
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex; 
 }
+.registerButton button{
+    background: linear-gradient(to right, #ff7881, #ff9a8b);
+    border: 1px solid #000000;               
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    padding: 10px 20px;                      
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; 
+}
 header img{
     width: 60px;
 }

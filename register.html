@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Register</h2>
+    <input type="text" id="fullName" placeholder="Full Name"><br>
+    <input type="text" id="phone" placeholder="Phone Number"><br>
+    <input type="text" id="address" placeholder="Address"><br>
+    <input type="text" id="zip" placeholder="ZIP Code"><br>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="register()">Register</button>
+
+    <script>
+    function register() {
+    const userInfo = {
+        fullName: document.getElementById("fullName").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        zip: document.getElementById("zip").value,
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+    };
+
+  
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+    alert("Registration successful! Redirecting to login...");
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 3000);
+    }
+</script>
+</body>
+</html>

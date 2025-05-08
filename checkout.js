@@ -60,6 +60,17 @@ function setupShippingListener() {
     });
 }
 
+function autofillProfileData() {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (userInfo) {
+        document.getElementById("name").value = userInfo.fullName || '';
+        document.getElementById("phone").value = userInfo.phone || '';
+        document.getElementById("address").value = userInfo.address || '';
+        document.getElementById("zip").value = userInfo.zip || '';
+    }
+}
+
 checkCart();
 addCartToHTML();
 setupShippingListener();
+autofillProfileData();
