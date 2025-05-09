@@ -47,11 +47,18 @@ function addCartToHTML() {
 }
 
 function updateTotalPrice() {
-    const shippingValue = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
-    const total = window.rawProductTotal + shippingValue;
+    const baseShipping = typeof window.shippingCost === 'number' ? window.shippingCost : 10;
+    const expeditedAddon = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
+    const fullShipping = baseShipping + expeditedAddon;
+    const total = window.rawProductTotal + fullShipping;
 
     const totalPriceHTML = document.querySelector('.totalPrice');
-    totalPriceHTML.innerText = '$' + total;
+    totalPriceHTML.innerText = '$' + total.toFixed(2);
+
+    const shippingPriceHTML = document.querySelector('.shippingPrice');
+    if (shippingPriceHTML) {
+        shippingPriceHTML.innerText = fullShipping.toFixed(2);
+    }
 }
 
 function setupShippingListener() {
@@ -70,7 +77,19 @@ function autofillProfileData() {
     }
 }
 
+function setupZipListener() {
+    const zipInput = document.getElementById('zip');
+    if (zipInput) {
+        zipInput.addEventListener('input', () => {
+            setTimeout(() => {
+                updateTotalPrice(); 
+            }, 100);
+        });
+    }
+}
+
 checkCart();
 addCartToHTML();
 setupShippingListener();
 autofillProfileData();
+setupZipListener();
