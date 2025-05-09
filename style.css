@@ -12,23 +12,29 @@ a{
     max-width: 90%;
     transition: transform 1s;
 }
-.loginButton button{
-    background: linear-gradient(to right, #ff7881, #ff9a8b);
-    border: 1px solid #000000;               
+.loginButton button,
+.registerButton button {
+    background: linear-gradient(to right, #ff7881, #ff9a8b);          
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     padding: 10px 20px;                      
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex; 
+    border: none; 
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }
-.registerButton button{
-    background: linear-gradient(to right, #ff7881, #ff9a8b);
-    border: 1px solid #000000;               
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    padding: 10px 20px;                      
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex; 
+.loginButton button:hover,
+.registerButton button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.buttonContainer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 10px;               
+    margin-top: 50px;        
 }
 header img{
     width: 60px;
@@ -39,8 +45,7 @@ header {
     justify-content: space-between;
     background: linear-gradient(to right, #ff7881, #ff9a8b); 
     margin-bottom: 20px;
-    width: 100%;
-    border: 1px solid #000000;               
+    width: 100%;            
     border-radius: 12px;                     
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     padding: 10px 20px;                      
@@ -201,7 +206,7 @@ header .totalQuantity{
     padding: 20px;
 }
 .checkoutLayout .right{
-    background-color: #5358B3;
+    background: linear-gradient(to right, #ff7881, #ff9a8b); 
     border-radius: 20px;
     padding: 40px;
     color: #fff;
@@ -210,7 +215,7 @@ header .totalQuantity{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    border-bottom: 1px solid #7a7fe2;
+    border-bottom: 1px solid #0E0F11;
     padding-bottom: 20px;
 }
 .checkoutLayout .form h1,
@@ -227,7 +232,7 @@ header .totalQuantity{
     border-radius: 20px;
     margin-top: 10px;
     border:none;
-    background-color: #6a6fc9;
+    background-color: #d8496d;
     color: #fff;
 }
 .shippingform form{
@@ -250,7 +255,7 @@ header .totalQuantity{
     height: 40px;
     border: none;
     border-radius: 20px;
-    background-color: #49D8B9;
+    background-color: #d8496d;
     margin-top: 20px;
     font-weight: bold;
     color: #fff;
@@ -262,7 +267,16 @@ header .totalQuantity{
     padding: 20px 0;
 }
 .returnCart .list .item img{
-    height: 80px;
+    width: 100%;                        
+    height: auto;                       
+    object-fit: cover;                  
+    border-radius: 12px;                
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.returnCart .list .item img:hover {
+    transform: scale(1.2);            
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35); 
 }
 .returnCart .list .item{
     display: grid;

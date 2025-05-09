@@ -3,36 +3,42 @@
         "id": 1,
         "name": "Red Hair Doll",
         "price": 50,
-        "image": "images/doll1.jfif"
+        "image": "images/doll1.jfif",
+        "desc": "A doll with bright red hair!"
     },
     {
         "id": 2,
         "name": "Yellow Hair Doll",
         "price": 45,
-        "image": "images/doll2.jfif"
+        "image": "images/doll2.jfif",
+        "desc": "A doll with bright yellow hair!"
     },
     {
         "id": 3,
         "name": "Cozy Doll",
         "price": 58,
-        "image": "images/doll3.jpg"
+        "image": "images/doll3.jpg",
+        "desc": "A doll that is very cozy!"
     },
     {
         "id": 4,
         "name": "Blank Doll",
         "price": 54,
-        "image": "images/doll4.jpg"
+        "image": "images/doll4.jpg",
+        "desc": "A doll to customize as you like!"
     },
     {
         "id": 5,
         "name": "Monkey Doll",
         "price": 55,
-        "image": "images/doll5.jfif"
+        "image": "images/doll5.jfif",
+        "desc": "A doll that is a monkey!"
     },
     {
-        "id": 5,
+        "id": 6,
         "name": "Happy Doll",
         "price": 51,
-        "image": "images/doll6.jfif"
+        "image": "images/doll6.jfif",
+        "desc": "A doll that is very happy!"
     }
 ]
