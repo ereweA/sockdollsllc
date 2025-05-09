@@ -50,7 +50,10 @@ function updateTotalPrice() {
     const baseShipping = typeof window.shippingCost === 'number' ? window.shippingCost : 10;
     const expeditedAddon = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
     const fullShipping = baseShipping + expeditedAddon;
-    const total = window.rawProductTotal + fullShipping;
+
+    const subtotal = window.rawProductTotal;
+    const tax = calculateTax(document.getElementById('zip').value, subtotal); 
+    const total = subtotal + fullShipping + tax; 
 
     const totalPriceHTML = document.querySelector('.totalPrice');
     totalPriceHTML.innerText = '$' + total.toFixed(2);
@@ -58,6 +61,11 @@ function updateTotalPrice() {
     const shippingPriceHTML = document.querySelector('.shippingPrice');
     if (shippingPriceHTML) {
         shippingPriceHTML.innerText = fullShipping.toFixed(2);
+    }
+
+    const taxAmountHTML = document.querySelector('.taxAmount');
+    if (taxAmountHTML) {
+        taxAmountHTML.innerText = '$' + tax.toFixed(2);
     }
 }
 
@@ -87,6 +95,27 @@ function setupZipListener() {
         });
     }
 }
+
+function calculateTax(zip, subtotal) {
+    let taxRate = 0;
+
+    if (/^\d{5}$/.test(zip)) {
+        const zipStart = zip.substring(0, 2); 
+        
+        switch (zipStart) {
+            case '01': case '02': case '03': case '04': 
+                taxRate = 0.05; break;  
+            case '05': case '06': case '07': case '08': 
+                taxRate = 0.07; break;  
+            case '09': case '10': 
+                taxRate = 0.08; break;  
+            default:
+                taxRate = 0.06; 
+        }
+    }
+    return subtotal * taxRate;
+}
+
 
 checkCart();
 addCartToHTML();
