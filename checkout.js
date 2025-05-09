@@ -116,6 +116,22 @@ function calculateTax(zip, subtotal) {
     return subtotal * taxRate;
 }
 
+function showOrderSummary() {
+    const name = document.getElementById("name").value || "Customer";
+    const address = document.getElementById("address").value || "your address";
+    const total = document.querySelector(".totalPrice")?.innerText || "$0.00";
+
+    alert(`${name}, your products will be delivered to ${address}. Total cost: ${total}`);
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1000);
+
+    listCart = [];
+    document.cookie = "listCart=[]; path=/; max-age=0"; 
+
+    addCartToHTML();
+}
 
 checkCart();
 addCartToHTML();
