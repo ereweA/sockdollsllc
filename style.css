@@ -12,44 +12,42 @@ a{
     max-width: 90%;
     transition: transform 1s;
 }
-.loginButton button,
-.registerButton button {
-    background: linear-gradient(to right, #ff7881, #ff9a8b);          
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    padding: 10px 20px;                      
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: none; 
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-.loginButton button:hover,
-.registerButton button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-.buttonContainer {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 10px;               
-    margin-top: 50px;        
-}
 header img{
     width: 60px;
 }
 header {
+    font-family: 'Century Gothic', 'Arial', sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: linear-gradient(to right, #ff7881, #ff9a8b); 
     margin-bottom: 20px;
-    width: 100%;            
+    width: auto;            
     border-radius: 12px;                     
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    padding: 10px 20px;                      
+    padding: 10px 20px;                       
     transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    max-width: 1200px;  
+}
+body:not(.index-page) header {
+    margin: 0 auto; 
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; 
+}
+header h1 {
+    margin: 0 10px;
+}
+header a {
+    text-decoration: none; 
+    color: inherit; 
+    transition: color 0.3s ease; 
+}
+header a:hover {
+    color: #ffcfc6; 
 }
 header:hover {
     transform: translateY(-2px);
@@ -296,7 +294,7 @@ header .totalQuantity{
 #chat-tab {
     position: fixed;
     bottom: 20px;
-    background: #007bff;
+    background: #ff9a8b;
     color: white;
     padding: 10px 20px;
     border-radius: 10px 10px 0 0;
@@ -323,7 +321,7 @@ header .totalQuantity{
 }
 
 #chat-header {
-    background: #007bff;
+    background: #ff9a8b;
     color: white;
     padding: 10px;
     font-weight: bold;
