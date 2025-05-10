@@ -1,29 +1,29 @@
-let listCart = [];
+let listCart = []; // initialize cart as an empty array
 
 function checkCart() {
     const cookieValue = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('listCart='));
+        .split('; ') // split cookies 
+        .find(row => row.startsWith('listCart=')); // find listcart cookie
     if (cookieValue) {
-        listCart = JSON.parse(cookieValue.split('=')[1]);
+        listCart = JSON.parse(cookieValue.split('=')[1]); // parse cart data from cookie
     }
 }
 
 function addCartToHTML() {
-    const listCartHTML = document.querySelector('.returnCart .list');
-    listCartHTML.innerHTML = '';
+    const listCartHTML = document.querySelector('.returnCart .list'); // get cart list element
+    listCartHTML.innerHTML = ''; // clear current cart HTML
 
-    const totalQuantityHTML = document.querySelector('.totalQuantity');
-    const totalPriceHTML = document.querySelector('.totalPrice');
+    const totalQuantityHTML = document.querySelector('.totalQuantity'); // get total quantity element
+    const totalPriceHTML = document.querySelector('.totalPrice'); // get total price element
 
     let totalQuantity = 0;
     let subtotal = 0;
 
-    if (listCart && listCart.length > 0) {
+    if (listCart && listCart.length > 0) { // check if cart has items
         listCart.forEach(product => {
             if (product) {
-                const newCart = document.createElement('div');
-                newCart.classList.add('item');
+                const newCart = document.createElement('div'); // create a new cart item element
+                newCart.classList.add('item'); // add 'item' class to the new element
                 newCart.innerHTML = `
                     <img src="${product.image}">
                     <div class="info">
@@ -33,7 +33,7 @@ function addCartToHTML() {
                     <div class="quantity">${product.quantity}</div>
                     <div class="returnPrice">$${product.price * product.quantity}</div>
                 `;
-                listCartHTML.appendChild(newCart);
+                listCartHTML.appendChild(newCart); // append the new cart item to the list
 
                 totalQuantity += product.quantity;
                 subtotal += product.price * product.quantity;
@@ -42,40 +42,40 @@ function addCartToHTML() {
     }
 
     totalQuantityHTML.innerText = totalQuantity;
-    window.rawProductTotal = subtotal;
+    window.rawProductTotal = subtotal; 
     updateTotalPrice();
 }
 
 function updateTotalPrice() {
-    const baseShipping = typeof window.shippingCost === 'number' ? window.shippingCost : 10;
-    const expeditedAddon = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
-    const fullShipping = baseShipping + expeditedAddon;
+    const baseShipping = typeof window.shippingCost === 'number' ? window.shippingCost : 10; // get base shipping cost
+    const expeditedAddon = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0); // get expedited shipping addon
+    const fullShipping = baseShipping + expeditedAddon; // calculate total shipping cost
 
-    const subtotal = window.rawProductTotal;
-    const tax = calculateTax(document.getElementById('zip').value, subtotal); 
-    const total = subtotal + fullShipping + tax; 
+    const subtotal = window.rawProductTotal; // get the subtotal
+    const tax = calculateTax(document.getElementById('zip').value, subtotal);  // calculate tax based on zip code
+    const total = subtotal + fullShipping + tax;  // calculate total price
 
-    const totalPriceHTML = document.querySelector('.totalPrice');
-    totalPriceHTML.innerText = '$' + total.toFixed(2);
+    const totalPriceHTML = document.querySelector('.totalPrice'); // get total price element
+    totalPriceHTML.innerText = '$' + total.toFixed(2); // display total price
 
-    const shippingPriceHTML = document.querySelector('.shippingPrice');
+    const shippingPriceHTML = document.querySelector('.shippingPrice'); // get shipping price element
     if (shippingPriceHTML) {
-        shippingPriceHTML.innerText = fullShipping.toFixed(2);
+        shippingPriceHTML.innerText = fullShipping.toFixed(2); // display shipping price
     }
 
-    const taxAmountHTML = document.querySelector('.taxAmount');
+    const taxAmountHTML = document.querySelector('.taxAmount'); // get tax amount element
     if (taxAmountHTML) {
-        taxAmountHTML.innerText = '$' + tax.toFixed(2);
+        taxAmountHTML.innerText = '$' + tax.toFixed(2); // display tax amount
     }
 }
 
 function setupShippingListener() {
     document.querySelectorAll('input[name="shipping"]').forEach(radio => {
-        radio.addEventListener('change', updateTotalPrice);
+        radio.addEventListener('change', updateTotalPrice); // update total price when shipping option changes
     });
 }
 
-function autofillProfileData() {
+function autofillProfileData() { // autofill fields based on register data
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (userInfo) {
         document.getElementById("name").value = userInfo.fullName || '';
@@ -86,12 +86,12 @@ function autofillProfileData() {
 }
 
 function setupZipListener() {
-    const zipInput = document.getElementById('zip');
+    const zipInput = document.getElementById('zip'); // get zip input field
     if (zipInput) {
-        zipInput.addEventListener('input', () => {
+        zipInput.addEventListener('input', () => { // listen for zip code input
             setTimeout(() => {
-                updateTotalPrice(); 
-            }, 100);
+                updateTotalPrice();  // update total price after zip code input
+            }, 100); // delay update to allow input processing
         });
     }
 }
@@ -99,10 +99,10 @@ function setupZipListener() {
 function calculateTax(zip, subtotal) {
     let taxRate = 0;
 
-    if (/^\d{5}$/.test(zip)) {
-        const zipStart = zip.substring(0, 2); 
+    if (/^\d{5}$/.test(zip)) { // check if zip is a valid 5-digit number
+        const zipStart = zip.substring(0, 2); // get the first 2 digits of the zip code
         
-        switch (zipStart) {
+        switch (zipStart) { // determine tax rate based on placeholder regions
             case '01': case '02': case '03': case '04': 
                 taxRate = 0.05; break;  
             case '05': case '06': case '07': case '08': 
@@ -110,25 +110,25 @@ function calculateTax(zip, subtotal) {
             case '09': case '10': 
                 taxRate = 0.08; break;  
             default:
-                taxRate = 0.06; 
+                taxRate = 0.06; // default tax rate
         }
     }
-    return subtotal * taxRate;
+    return subtotal * taxRate; // calculate tax based on subtotal
 }
 
 function showOrderSummary() {
-    const name = document.getElementById("name").value || "Customer";
+    const name = document.getElementById("name").value || "Customer"; // get field values
     const address = document.getElementById("address").value || "your address";
     const total = document.querySelector(".totalPrice")?.innerText || "$0.00";
 
     alert(`${name}, your products will be delivered to ${address}. Total cost: ${total}`);
 
     setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // redirect to index page after 1 second
     }, 1000);
 
-    listCart = [];
-    document.cookie = "listCart=[]; path=/; max-age=0"; 
+    listCart = []; // reset cart array
+    document.cookie = "listCart=[]; path=/; max-age=0"; // clear listCart cookie
 
     addCartToHTML();
 }
