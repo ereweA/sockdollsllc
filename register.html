@@ -40,6 +40,8 @@
 
   
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    localStorage.setItem("user", userInfo.username);
+    localStorage.setItem("pass", userInfo.password);
 
     alert("Registration successful! Redirecting to login...");
     setTimeout(() => {
